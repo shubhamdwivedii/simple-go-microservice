@@ -25,8 +25,12 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 func (h *Handlers) Logger(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		startTime := time.Now() // Lets time the request
-		defer h.logger.Printf("Request Proccessed in %s", time.Now().Sub(startTime))
+		// defer h.logger.Printf("Request Proccessed in %s", time.Now().Sub(startTime))
+		// don't do defer. Parameters of defer are calculated here only. Only execution is defered. This will result in 0ms time always.
 		next(w, r)
+		// Write headers if you want here.
+		h.logger.Printf("Request Proccessed in %s", time.Now().Sub(startTime))
+
 	}
 }
 

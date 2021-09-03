@@ -17,7 +17,7 @@ var (
 
 func main() {
 	// Its good practice to create a logger, using log directly everywhere will give trouble when you want specific formatting everywhere.
-	logger := log.New(os.Stdout, "SHUBHAM: ", log.LstdFlags|log.Lshortfile)
+	logger := log.New(os.Stdout, "SHUBHAM: ", log.LstdFlags|log.Lshortfile) // | is bitwise OR operator. It combines LstdFlags and Lshortfile
 	// log.New takes io.Writer, prefix string, and logging property flag (log.Lshortfile will add file name)
 
 	mux := http.NewServeMux()
